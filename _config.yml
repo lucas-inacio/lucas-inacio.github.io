@@ -10,6 +10,7 @@ keywords:
 author: Lucas Inácio Viegas
 language: en
 timezone: ''
+root: /lucas-inacio.github.io/
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
