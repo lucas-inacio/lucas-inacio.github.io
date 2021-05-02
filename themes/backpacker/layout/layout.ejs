@@ -3,16 +3,15 @@
     <%- partial('_partial/head') %>
 
     <body>
-        <%- partial('_partial/menu') %>
 
         <div class="container">
             <!-- Blog Header: title and subtitle -->
             <%- partial('_partial/header') %>
             
-            <div class="row">
+            <div class="row blog-container">
 
                 <!-- Main Content -->
-                <div class="col-sm-8 blog-main">
+                <div class="col-sm-8 blog-main jumbotron">
                     <%- body %>
                 </div>
     
@@ -26,5 +25,10 @@
 
         <%- partial('_partial/footer') %>
         <%- partial('_partial/after-footer') %>
+
+        <!-- Icons from Feather -->
+        <script>
+            feather.replace();
+        </script>
     </body>
 </html>
