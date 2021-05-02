@@ -54,7 +54,7 @@
             <div class="row blog-container">
 
                 <!-- Main Content -->
-                <div class="col-sm-8 blog-main jumbotron">
+                <div class="col-sm-8 blog-main jumbotron shadow-sm">
                     
     <div class="blog-post">
 
@@ -93,8 +93,8 @@
 </nav>
                 </div>
     
-                <!-- Sidebar -->
-                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <!-- Sidebar visible only on screens bigger than sm-->
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar-big d-none d-sm-block">
                     
     
     <div class="sidebar-module sidebar-module-inset">
@@ -105,6 +105,20 @@
 
     
 
+                </div>
+
+                <!-- Sidebar visible only on screens smaller than sm-->
+                <div class="shadow-sm navbar navbar-expand-lg bg-light navbar-light fixed-top d-sm-none">
+                    <div class="nav mr-auto">
+                        
+                            
+                                <a class="nav-link" data-toggle="collapse" data-target="#aboutmenu" aria-haspopup="true" aria-expanded="false">About</a>
+                                <div class="collapse text-muted p-4" id="aboutmenu">This is the place where I share ideas and fun projects.</div>
+                            
+                        
+                            
+                        
+                    </div>
                 </div>
             </div>
     
