@@ -142,10 +142,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1rem;
 }
 
-.sidebar-small[aria-expanded="true"] {
-    background-color: #e5e5e5;
+.sidebar-small {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar-small {
-    border-radius: 7%;
+.sidebar-small > * {
+    flex: 1;
+}
+
+.sidebar-small-item[aria-expanded="true"] {
+    color: grey;
 }

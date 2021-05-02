@@ -108,12 +108,20 @@
                 </div>
 
                 <!-- Sidebar visible only on screens smaller than sm-->
-                <div class="shadow-sm navbar navbar-expand-lg bg-light navbar-light fixed-top d-sm-none">
-                    <div class="nav mr-auto">
+                <div class="shadow-sm navbar navbar-expand-lg bg-light navbar-light fixed-top d-sm-none sidebar-small" id="sidebar-accordion">
+                    <div class="nav accordion mr-auto">
                         
                             
-                                <a class="nav-link sidebar-small" data-toggle="collapse" data-target="#aboutmenu" aria-expanded="false">About</a>
-                                <div class="collapse text-muted p-4" id="aboutmenu">This is the place where I share ideas and fun projects.</div>
+                                <a class="nav-link sidebar-small-item" data-toggle="collapse" data-target="#aboutmenu" aria-expanded="false">About</a>
+                            
+                        
+                            
+                        
+                    </div>
+                    <div>                        
+                        
+                            
+                                <div class="collapse text-muted p-4" data-parent="#sidebar-accordion" id="aboutmenu">This is the place where I share ideas and fun projects.</div>
                             
                         
                             
