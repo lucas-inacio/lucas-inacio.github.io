@@ -25,7 +25,7 @@
                     <div class="nav mr-auto">
                         <% for(let widget in theme.widgets){ %>
                             <% if (theme.widgets[widget]['text']) { %>
-                                <a class="nav-link" data-toggle="collapse" data-target="<%- '#' + widget + 'menu' %>" aria-haspopup="true" aria-expanded="false"><%- theme.widgets[widget]['title'] %></a>
+                                <a class="nav-link sidebar-small" data-toggle="collapse" data-target="<%- '#' + widget + 'menu' %>" aria-expanded="false"><%- theme.widgets[widget]['title'] %></a>
                                 <div class="collapse text-muted p-4" id="<%- widget + 'menu' %>"><%- theme.widgets[widget]['text'] %></div>
                             <% } %>
                         <% } %>

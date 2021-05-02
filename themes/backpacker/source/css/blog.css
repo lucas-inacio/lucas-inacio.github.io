@@ -141,3 +141,11 @@ h1, h2, h3, h4, h5, h6 {
 .blog-container {
     margin-top: 1rem;
 }
+
+.sidebar-small[aria-expanded="true"] {
+    background-color: #e5e5e5;
+}
+
+.sidebar-small {
+    border-radius: 7%;
+}
