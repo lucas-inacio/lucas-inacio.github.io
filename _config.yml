@@ -9,7 +9,7 @@ description: 'My personal blog'
 keywords:
 author: Lucas Inácio Viegas
 language: en
-timezone: ''
+timezone: 'America/Sao_Paulo'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
