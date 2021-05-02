@@ -3,6 +3,7 @@
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
+  margin-top: 1rem;
 }
 
 .blog-header-logo {
@@ -101,6 +102,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
+
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
@@ -125,4 +127,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .blog-post-comments {
   margin-top: 50px;
+}
+
+.blog-nav-item {
+  margin-left: 0rem;
+  margin-right: 1rem;
+}
+
+.navbar {
+  padding-left: 0rem;
+}
+
+.blog-container {
+  margin-top: 1rem;
 }
