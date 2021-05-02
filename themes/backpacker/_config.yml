@@ -11,5 +11,5 @@ disqus_shortname: lucas-inacio-github-io
 
 # Widgets List
 widgets:
-  about: This blog is based off the official bootstrap blog template. Checkout the corresponding tutorial at <a href="http://www.codeblocq.com">http://www.codeblocq.com</a
+  about: This is the place where I share ideas and fun projects.
   tags: true
