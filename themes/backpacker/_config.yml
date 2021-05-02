@@ -2,8 +2,8 @@ menu:
     Home: /
     Archives: /archives
     GitHub: https://github.com/lucas-inacio
-
-
+    
+    
 # Read More text
 excerpt_link: Read More
 
@@ -12,5 +12,8 @@ disqus_shortname: lucas-inacio-github-io
 
 # Widgets List
 widgets:
-  about: This is the place where I share ideas and fun projects.
-  tags: true
+    about: 
+        title: About
+        text: This is the place where I share ideas and fun projects.
+    tags:
+        title: Tags
