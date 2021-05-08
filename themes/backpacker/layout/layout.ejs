@@ -25,7 +25,7 @@
                     <div class="nav accordion mr-auto">
                         <% for(let widget in theme.widgets){ %>
                             <% if (theme.widgets[widget]['text']) { %>
-                                <a class="nav-link sidebar-small-item" data-toggle="collapse" data-target="<%- '#' + widget + 'menu' %>" aria-expanded="false"><%- theme.widgets[widget]['title'] %></a>
+                                <a class="nav-link sidebar-small-item auto-hide-click" data-toggle="collapse" data-target="<%- '#' + widget + 'menu' %>" aria-expanded="false"><%- theme.widgets[widget]['title'] %></a>
                             <% } %>
                         <% } %>
                     </div>
