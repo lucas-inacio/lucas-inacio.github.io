@@ -2,12 +2,12 @@
 title: Hello World
 date: 2021/05/01
 ---
-Hello, everyone! This is my first post and I just brought it to life!
+Olá, todo mundo! Este é meu primeiro post!
 <!-- more -->
-## What this is all about?
-I hope to share my projects and ideas in this blog so I can contribute somehow with other people.
-Of course, the content here will be later useful as documentation when I need to remember things.
+## Do que se trata?
+Compartilhando aqui meus projetos eu espero contribuir de alguma forma com outras pessoas.
+O conteúdo publicado aqui também servirá como documentação para que eu possa consultar mais tarde :D
 
-## Thanks
-The layout used in this blog was based entirely in [this](https://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/) series of tutorials.
+## Agradecimentos
+O visual deste blog foi baseado (e modificado) [nesta](https://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/) série de tutoriais.
 
