@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 .display-4 {
     font-size: 2.5rem;
 }
+
 @media (min-width: 768px) {
     .display-4 {
         font-size: 3rem;
@@ -73,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 .blog-pagination {
     margin-bottom: 4rem;
 }
+
 .blog-pagination > .btn {
     border-radius: 2rem;
 }
@@ -83,13 +85,15 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post {
     margin-bottom: 4rem;
 }
+
 .blog-post-title {
     margin-bottom: .25rem;
     font-size: 2.5rem;
 }
+
 .blog-post-meta {
     margin-bottom: 1.25rem;
-    color: #999;
+    /* color: #999; */
 }
 
 /*
@@ -97,9 +101,9 @@ h1, h2, h3, h4, h5, h6 {
 */
 .blog-footer {
     padding: 2.5rem 0;
-    color: #999;
+    /* color: #999; */
     text-align: center;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     border-top: .05rem solid #e5e5e5;
 }
 
@@ -154,6 +158,50 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
 }
 
-.sidebar-small-item[aria-expanded="true"] {
-    color: grey;
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #FFF;
+        color: #000;
+    }
+
+    .jumbotron {
+        background-color: #EAEAEA;
+    }
+
+    div#sidebar-accordion {
+        background-color: #DDD;
+        color: black;
+    }
+
+    .sidebar-small-item[aria-expanded="true"] {
+        color: black;
+    }
+
+    .sidebar-small-item[aria-expanded="false"] {
+        color: black;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0A0A0A;
+        color: #FFF;
+    }
+
+    .jumbotron {
+        background-color: #222;
+    }
+    
+    div#sidebar-accordion {
+        background-color: #444;
+        color: white;
+    }
+
+    .sidebar-small-item[aria-expanded="true"] {
+        color: white;
+    }
+
+    .sidebar-small-item[aria-expanded="false"] {
+        color: white;
+    }
 }
