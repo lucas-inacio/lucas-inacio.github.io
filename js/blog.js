@@ -1,26 +1,8 @@
 function hideSideBar() {
-    $('.auto-hide-click').each(function () {
-        $(this).addClass('collapsed');
-        this.setAttribute('aria-expanded', 'false');
-    });
-
     $('div[data-parent="#sidebar-accordion"]').removeClass('show');
 }
 
 $(document).ready(() => {
-    let menu = $('.auto-hide')[0];
-    menu.style.visibility = 'hidden';
-    
-    $(document).scroll((e) => {
-        if (window.scrollY === 0) {
-            menu.style.visibility = 'hidden';
-        }
-        else
-            menu.style.visibility = 'visible';
-    
-        hideSideBar();
-    });
-
     window.addEventListener(
         'click',
         (e) => {
