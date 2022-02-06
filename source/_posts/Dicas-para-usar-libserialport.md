@@ -11,7 +11,7 @@ Dicas valiosas para quem quer utilizar essa biblioteca para comunicação serial
 Ao utilizar a biblioteca eu enfrentei dois desafios. Um deles foi a ausência de dados recebidos ao tentar se conectar a uma Raspberry Pi Pico. O outro estava relacionado com a detecção de desconexão. Abaixo é relatada a forma como eu os resolvi.
 
 #### Ausência de dados
-Após realizar a abertura da porta desejada e configurá-la não havia dados de entrada. A configuração utilizada segue abaixo:
+Após realizar a abertura da porta desejada e configurá-la não havia dados de entrada. A configuração utilizada segue logo abaixo:
 
 ```cpp
 // Os erros não são checados neste exemplo apenas para diminuir o tamanho do código
