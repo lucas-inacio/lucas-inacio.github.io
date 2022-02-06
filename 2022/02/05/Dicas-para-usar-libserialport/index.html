@@ -1,0 +1,163 @@
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon/favicon.ico">
+
+    <title>Blog do Lucas</title>
+
+    <!-- Bootstrap core CSS -->
+    
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+
+    <!-- Custom styles for this template -->
+    
+<link rel="stylesheet" href="/css/blog.css">
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    
+<script src="/js/blog.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+
+        <div class="container">
+            <!-- Blog Header: title and subtitle -->
+            <div class="blog-header">
+    <div>
+        <h1 class="blog-title">Blog do Lucas</h1>
+        <p class="lead blog-description">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
+    </div>
+    <nav class="navbar navbar-expand">
+    <div class="navbar-nav mr-auto">
+        
+            <a class="nav-link" href="/">Início</a>
+        
+            <a class="nav-link" href="/archives">Arquivo</a>
+        
+            <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+        
+    </div>
+</nav>
+</div>
+            
+            <div class="row blog-container">
+
+                <!-- Main Content -->
+                <div class="col-sm-8 blog-main jumbotron">
+                    <div class="blog-post">
+
+    <!-- Title -->
+    <h2 class="blog-post-title">
+        <a href="/2022/02/05/Dicas-para-usar-libserialport/">
+            Dicas para usar libserialport
+        </a>
+    </h2>
+
+    <!-- Date and Author -->
+    <p class="blog-post-meta">
+        05-02-2022
+        
+    </p>
+
+    <!-- Content -->
+    <p>Dicas valiosas para quem quer utilizar essa biblioteca para comunicação serial.</p>
+<span id="more"></span>
+<h2 id="O-que-e-a-libserialport"><a href="#O-que-e-a-libserialport" class="headerlink" title="O que é a libserialport"></a>O que é a libserialport</h2><p>É uma biblioteca multiplataforma escrita em C destinada a facilitar o desenvolvimento de programas que utilizam comunicação serial. Ela é desenvolvida e mantida pela <a target="_blank" rel="noopener" href="https://sigrok.org/">Sigrok</a>.</p>
+<h2 id="Problemas-encontrados"><a href="#Problemas-encontrados" class="headerlink" title="Problemas encontrados"></a>Problemas encontrados</h2><p>Ao utilizar a biblioteca eu enfrentei dois desafios. Um deles foi a ausência de dados recebidos ao tentar se conectar a uma Raspberry Pi Pico. O outro estava relacionado com a detecção de desconexão. Abaixo é relatada a forma como eu os resolvi.</p>
+<h4 id="Ausencia-de-dados"><a href="#Ausencia-de-dados" class="headerlink" title="Ausência de dados"></a>Ausência de dados</h4><p>Após realizar a abertura da porta desejada e configurá-la não havia dados de entrada. A configuração utilizada segue logo abaixo:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Os erros não são checados neste exemplo apenas para diminuir o tamanho do código</span></span><br><span class="line">sp_port *port;</span><br><span class="line"><span class="built_in">sp_get_port_by_name</span>(<span class="string">&quot;COM3&quot;</span>, &amp;port);</span><br><span class="line"><span class="built_in">sp_open</span>(port, SP_MODE_READ_WRITE);</span><br><span class="line"></span><br><span class="line">sp_port_config *config;</span><br><span class="line"><span class="built_in">sp_new_config</span>(&amp;config);</span><br><span class="line"><span class="built_in">sp_set_config_baudrate</span>(config, <span class="number">9600</span>);</span><br><span class="line"><span class="built_in">sp_set_config_bits</span>(config, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">sp_set_config_flowcontrol</span>(config, SP_FLOWCONTROL_NONE);</span><br><span class="line"><span class="built_in">sp_set_config_parity</span>(config, SP_PARITY_NONE);</span><br><span class="line"><span class="built_in">sp_set_config_stopbits</span>(config, <span class="number">1</span>);</span><br><span class="line"><span class="built_in">sp_set_config</span>(port, config);</span><br><span class="line"><span class="built_in">sp_free_config</span>(config);</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buffer;</span><br><span class="line"><span class="comment">// Nunca recebe nada a não ser que a porta já tenha sido aberta por outro programa</span></span><br><span class="line"><span class="comment">// que a configura corretamente.</span></span><br><span class="line"><span class="built_in">sp_blocking_read</span>(port, &amp;buffer, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">sp_close</span>(port);</span><br><span class="line"><span class="built_in">sp_free_port</span>(port);</span><br></pre></td></tr></table></figure>
+
+<p>Graças a <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/8910167">essa resposta</a> foi possível resolver o problema.<br>O código completo segue abaixo com a inclusão da configuração necessária:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Os erros não são checados neste exemplo apenas para diminuir o tamanho do código</span></span><br><span class="line">sp_port *port;</span><br><span class="line"><span class="built_in">sp_get_port_by_name</span>(<span class="string">&quot;COM3&quot;</span>, &amp;port);</span><br><span class="line"><span class="built_in">sp_open</span>(port, SP_MODE_READ_WRITE);</span><br><span class="line"></span><br><span class="line">sp_port_config *config;</span><br><span class="line"><span class="built_in">sp_new_config</span>(&amp;config);</span><br><span class="line"><span class="built_in">sp_set_config_baudrate</span>(config, <span class="number">9600</span>);</span><br><span class="line"><span class="built_in">sp_set_config_bits</span>(config, <span class="number">8</span>);</span><br><span class="line"><span class="built_in">sp_set_config_flowcontrol</span>(config, SP_FLOWCONTROL_NONE);</span><br><span class="line"><span class="built_in">sp_set_config_parity</span>(config, SP_PARITY_NONE);</span><br><span class="line"><span class="built_in">sp_set_config_stopbits</span>(config, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// As duas linhas abaixo são a chave.</span></span><br><span class="line"><span class="built_in">sp_set_config_dtr</span>(config, SP_DTR_ON);</span><br><span class="line"><span class="built_in">sp_set_config_rts</span>(config, SP_RTS_ON);</span><br><span class="line"></span><br><span class="line"><span class="built_in">sp_set_config</span>(port, config);</span><br><span class="line"><span class="built_in">sp_free_config</span>(config);</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buffer;</span><br><span class="line"><span class="comment">// Agora funciona.</span></span><br><span class="line"><span class="built_in">sp_blocking_read</span>(port, &amp;buffer, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">sp_close</span>(port);</span><br><span class="line"><span class="built_in">sp_free_port</span>(port);</span><br></pre></td></tr></table></figure>
+<p>Este problema nunca acontecia com um Arduino Nano, por exemplo. Aparentemente apenas alguns dispositivos se comportam dessa maneira.</p>
+<h4 id="Detectar-desconexao"><a href="#Detectar-desconexao" class="headerlink" title="Detectar desconexão"></a>Detectar desconexão</h4><p>A maioria das funções da biblioteca libserialport retorna um valor do tipo enum sp_return. A constante SP_OK significa sucesso na operação. Outros valores podem signifcar erros (valores negativos) ou ainda ter outros siginificados dependendo da função chamada.<br>No entanto sp_blocking_read e sp_nonblocking_read não retornam nenhum erro se a porta for desconectada após aberta. Utilizei um hack para detectar o evento:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SerialPort::checkConnected</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    sp_signal signals;</span><br><span class="line">    <span class="comment">// sp_get_signals falhará se a porta for desconectada</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">sp_get_signals</span>(mPort, &amp;signals) == SP_OK) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A função sp_get_signals falha ao desconectar a porta. Com isso é possível checar periodicamente se a porta ainda está disponível.</p>
+<h4 id="Problemas-resolvidos"><a href="#Problemas-resolvidos" class="headerlink" title="Problemas resolvidos"></a>Problemas resolvidos</h4><p>Os detalhes descritos podem ser úteis se estiver escrevendo uma aplicação que necessite se comunicar pela porta serial. A última solução é mais um “hack”, mas resolveu o problema. Espero que a informação auxilie no seu próximo projeto.</p>
+
+
+    <hr />
+
+    <!-- Tags and Categories links -->
+    
+    
+
+</div>
+                </div>
+    
+                <!-- Sidebar visible only on screens bigger than sm-->
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar-big d-none d-sm-block">
+                    
+    
+    <div class="sidebar-module sidebar-module-inset">
+        <h4>Sobre</h4>
+        <p>Aqui é onde eu compartilho minhas ideias e projetos.</p>
+    </div>
+
+
+    
+
+                </div>
+
+                <!-- Sidebar visible only on screens smaller than sm-->
+                <div class="shadow-sm navbar navbar-expand-lg fixed-bottom d-sm-none sidebar-small" id="sidebar-accordion">
+                    <div class="nav accordion mr-auto">
+                        
+                            
+                                <a class="nav-link sidebar-small-item auto-hide-click" data-toggle="collapse" data-target="#aboutmenu" aria-expanded="false">Sobre</a>
+                            
+                        
+                            
+                        
+                    </div>
+                    <div>                        
+                        
+                            
+                                <div class="collapse p-4" data-parent="#sidebar-accordion" id="aboutmenu">Aqui é onde eu compartilho minhas ideias e projetos.</div>
+                            
+                        
+                            
+                        
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+        <footer class="blog-footer">
+    <p>Modelo de blog construído para <a target="_blank" rel="noopener" href="http://getbootstrap.com">Bootstrap</a> por <a target="_blank" rel="noopener" href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>Adaptado para o Hexo por <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">klugjo</a>.</p>
+    <p><a href="#">Voltar ao topo</a></p>
+</footer>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+
+        <!-- Icons from Feather -->
+        <script>
+            feather.replace();
+        </script>
+    </body>
+</html>
