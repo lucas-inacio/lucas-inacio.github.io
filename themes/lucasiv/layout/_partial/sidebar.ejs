@@ -1,13 +1,26 @@
+<!-- Ativo apenas em telas md e acima. -->
 <div class="text-center list-group col-md-4 d-none d-md-block">
-    <% for (let i in theme.menu) { %>
+    <div class="sticky-top" style="top: 200px;">    
+        <% for (let i in theme.menu) { %>
             <a class="list-group-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-    <% } %>
+        <% } %>
+    </div>
 </div>
-<ul class="nav d-block d-md-none">
-    <h3>Teste</h3>
-    <% for (let i in theme.menu) { %>
-        <li class="nav-item">
-            <a class="nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-        </li>
-    <% } %>
-</ul>
+
+<!-- Ativo apenas em telas pequenas. Menu lateral retrátil. -->
+<button class="btn btn-primary fixed-bottom d-block d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideBar" aria-controls="sideBar">
+    Toggle right offcanvas
+</button>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="sideBar">
+    <div class="offcanvas-header">
+        <h3>Header</h3>
+        <button type="button" class="btn-close text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="text-center list-group">
+            <% for (let i in theme.menu) { %>
+                    <a class="list-group-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+            <% } %>
+        </div>
+    </div>
+</div>
