@@ -1,0 +1,16 @@
+menu:
+    Início: /
+    Arquivo: /archives
+    GitHub: https://github.com/lucas-inacio
+    
+    
+# Read More text
+excerpt_link: Leia mais
+
+# Widgets List
+widgets:
+    about: 
+        title: Sobre
+        text: Aqui é onde eu compartilho minhas ideias e projetos.
+    tags:
+        title: Categorias
