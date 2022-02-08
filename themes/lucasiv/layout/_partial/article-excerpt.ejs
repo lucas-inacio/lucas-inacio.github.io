@@ -1,29 +1,34 @@
-<div class="blog-post">
-
-    <!-- Title -->
-    <h2 class="blog-post-title">
-        <a href="<%- config.root %><%- item.path %>">
-            <%- item.title %>
-        </a>
-    </h2>
+<div class="card mb-3">
 
     <!-- Date and Author -->
-    <p class="blog-post-meta">
+    <div class="card-header">
         <%= item.date.format(config.date_format) %>
         <% if(item.author) { %>
             by <%- item.author %>
         <% } %>
-    </p>
+    </div>
 
-    <!-- Content -->
-    <%- item.excerpt || item.content %>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    <% if(item.excerpt) { %>
-        <p>
+    <div class="card-body">
+        <!-- Title -->
+        <h3 class="card-title>
             <a href="<%- config.root %><%- item.path %>">
-                <%= theme.excerpt_link %>
+                <%- item.title %>
             </a>
+        </h3>
+
+
+        <p class="card-text">
+            <!-- Content -->
+            <%- item.excerpt || item.content %>
         </p>
-    <% } %>
+
+        <!-- Only display the Read More link if we are displaying an excerpt -->
+        <% if(item.excerpt) { %>
+            <p>
+                <a href="<%- config.root %><%- item.path %>">
+                    <%= theme.excerpt_link %>
+                </a>
+            </p>
+        <% } %>
+    </div>
 </div>
