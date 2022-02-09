@@ -1,32 +1,32 @@
 <div class="container">
     <!-- Somente em telas md e acima -->
-    <ul class="nav d-none d-lg-flex">
+    <ul class="nav d-none d-lg-flex justify-content-center">
         <% for (let i in theme.menu) { %>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+                <a class="nav-link text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
             </li>
         <% } %>
     </ul>
 
     <!-- Somente em telas pequenas -->
-    <nav class="navbar navbar-expand-lg navbar-light titleC d-block d-lg-none">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-block d-lg-none">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navBarContent" arai-controls="navBarContent" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end titleC" id="navBarContent">
+            <div class="offcanvas offcanvas-end bg-dark" id="navBarContent">
                 <div class="offcanvas-header text-white">
                     <h3>Menu</h3>
-                    <button type="button" class="btn-close text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-white text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <div class="list-group">
                         <% for (let i in theme.menu) { %>
-                            <a class="list-group-item titleC text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+                            <a class="list-group-item titleC text-dark" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
                         <% } %>
                         <hr />
                         <% for (let i in theme.tags) { %>
-                            <a class="list-group-item titleC text-white" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+                            <a class="list-group-item titleC text-dark" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
                         <% } %>
                     </ul>
                 </div>
