@@ -1,132 +1,167 @@
-<html>
-
+<!DOCTYPE html>
+<html class="background">
+<!-- <html style="background-color: #222;"> -->
     <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon/favicon.ico">
-
-    <title>Blog do Lucas</title>
-
-    <!-- Bootstrap core CSS -->
-    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blog do Lucas</title>
+        
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
-
-    <!-- Custom styles for this template -->
-    
-<link rel="stylesheet" href="/css/blog.css">
-
-
-    
+        
 <link rel="stylesheet" href="/prism/prism.css">
 
-    
-<script src="/prism/prism.js"></script>
-
-
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-    
-<script src="/js/blog.js"></script>
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
-
-    <body>
-
-        <div class="container">
-            <!-- Blog Header: title and subtitle -->
-            <div class="blog-header">
-    <div>
-        <h1 class="blog-title">Blog do Lucas</h1>
-        <p class="lead blog-description">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
-    </div>
-    <nav class="navbar navbar-expand">
-    <div class="navbar-nav mr-auto">
         
-            <a class="nav-link" href="/">Início</a>
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            .backgroundC {
+                background-color: #0A0A0A;
+            }
+
+            .mainC {
+                background-color: #222;
+            }
+
+            .headC {
+                background-color: #333;
+            }
+
+            .titleC {
+                background-color: seagreen;
+            }
+        </style>
+    <meta name="generator" content="Hexo 6.0.0"></head>
+    <body class="backgroundC">
+    <!-- <body style="background-color: #222;"> -->
+        <div class="main">
+            <div class="container-fluid sticky-top bg-dark">
+                <h1 class="container title bg-dark text-white">
+                    Blog do Lucas
+                </h1>
+                <p class="container text-white">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
+                <div class="container">
+    <!-- Somente em telas md e acima -->
+    <ul class="nav d-none d-lg-flex justify-content-center">
         
-            <a class="nav-link" href="/archives">Arquivo</a>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/">Início</a>
+            </li>
         
-            <a class="nav-link" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/archives">Arquivo</a>
+            </li>
         
-    </div>
-</nav>
+            <li class="nav-item">
+                <a class="nav-link text-white" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+            </li>
+        
+    </ul>
+
+    <!-- Somente em telas pequenas -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-block d-lg-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navBarContent" arai-controls="navBarContent" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end bg-dark" id="navBarContent">
+                <div class="offcanvas-header text-white">
+                    <h3>Menu</h3>
+                    <button type="button" class="btn-close bg-white text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="list-group">
+                        
+                            <a class="list-group-item titleC text-dark" href="/">Início</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/archives">Arquivo</a>
+                        
+                            <a class="list-group-item titleC text-dark" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+                        
+                        <hr />
+                        
+                            <a class="list-group-item titleC text-dark" href="/">C</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/">C++</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/">Go</a>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>
-            
-            <div class="row blog-container">
-
-                <!-- Main Content -->
-                <div class="col-sm-8 blog-main jumbotron">
-                    
-    <div class="blog-post">
-
-    <!-- Title -->
-    <h2 class="blog-post-title">
-        <a href="/2022/02/05/Dicas-para-usar-libserialport/">
-            Dicas para usar libserialport
-        </a>
-    </h2>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-secondary">
+                        
+    <div class="card mb-3 text-white mainC mt-3">
 
     <!-- Date and Author -->
-    <p class="blog-post-meta">
-        05-02-2022
+    <div class="card-header headC">
+        05/02/2022
         
-    </p>
+    </div>
 
-    <!-- Content -->
-    <p>Dicas valiosas para quem quer utilizar essa biblioteca para comunicação serial.</p>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-        <p>
+    <div class="card-body">
+        <!-- Title -->
+        <h3 class="card-title>
             <a href="/2022/02/05/Dicas-para-usar-libserialport/">
-                Leia mais
+                Dicas para usar libserialport
             </a>
+        </h3>
+
+
+        <p class="card-text">
+            <!-- Content -->
+            <p>Dicas valiosas para quem quer utilizar essa biblioteca para comunicação serial.</p>
         </p>
-    
+
+        <!-- Only display the Read More link if we are displaying an excerpt -->
+        
+            <p>
+                <a class="btn btn-success" href="/2022/02/05/Dicas-para-usar-libserialport/">
+                    Leia mais
+                </a>
+            </p>
+        
+    </div>
 </div>
 
-    <div class="blog-post">
-
-    <!-- Title -->
-    <h2 class="blog-post-title">
-        <a href="/2021/05/01/hello-world/">
-            Hello World
-        </a>
-    </h2>
+    <div class="card mb-3 text-white mainC mt-3">
 
     <!-- Date and Author -->
-    <p class="blog-post-meta">
-        01-05-2021
+    <div class="card-header headC">
+        01/05/2021
         
-    </p>
+    </div>
 
-    <!-- Content -->
-    <p>Olá, todo mundo! Este é meu primeiro post!</p>
-
-    <!-- Only display the Read More link if we are displaying an excerpt -->
-    
-        <p>
+    <div class="card-body">
+        <!-- Title -->
+        <h3 class="card-title>
             <a href="/2021/05/01/hello-world/">
-                Leia mais
+                Hello World
             </a>
-        </p>
-    
-</div>
+        </h3>
 
+
+        <p class="card-text">
+            <!-- Content -->
+            <p>Olá, todo mundo! Este é meu primeiro post!</p>
+        </p>
+
+        <!-- Only display the Read More link if we are displaying an excerpt -->
+        
+            <p>
+                <a class="btn btn-success" href="/2021/05/01/hello-world/">
+                    Leia mais
+                </a>
+            </p>
+        
+    </div>
+</div>
 
 <nav>
     <ul class="pager">
@@ -134,62 +169,26 @@
         
     </ul>
 </nav>
-                </div>
-    
-                <!-- Sidebar visible only on screens bigger than sm-->
-                <div class="col-sm-3 col-sm-offset-1 blog-sidebar-big d-none d-sm-block">
-                    
-    
-    <div class="sidebar-module sidebar-module-inset">
-        <h4>Sobre</h4>
-        <p>Aqui é onde eu compartilho minhas ideias e projetos.</p>
+
+                    </div>
+                    <!-- Ativo apenas em telas md e acima. -->
+<div class="text-center list-group col-lg-4 d-none d-lg-block px-3">
+    <div class="sticky-top rounded-bottom" style="top: 152px;">
+        <h5 class="text-white headC p-1 m-0 b-0 rounded-top">Categorias</h5> 
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/">C</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/">C++</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/">Go</a>
+        
     </div>
-
-
-    
-
-                </div>
-
-                <!-- Sidebar visible only on screens smaller than sm-->
-                <div class="shadow-sm navbar navbar-expand-lg fixed-bottom d-sm-none sidebar-small" id="sidebar-accordion">
-                    <div class="nav accordion mr-auto">
-                        
-                            
-                                <a class="nav-link sidebar-small-item auto-hide-click" data-toggle="collapse" data-target="#aboutmenu" aria-expanded="false">Sobre</a>
-                            
-                        
-                            
-                        
-                    </div>
-                    <div>                        
-                        
-                            
-                                <div class="collapse p-4" data-parent="#sidebar-accordion" id="aboutmenu">Aqui é onde eu compartilho minhas ideias e projetos.</div>
-                            
-                        
-                            
-                        
-                    </div>
+</div>
                 </div>
             </div>
-    
         </div>
-
-        <footer class="blog-footer">
-    <p>Modelo de blog construído para <a target="_blank" rel="noopener" href="http://getbootstrap.com">Bootstrap</a> por <a target="_blank" rel="noopener" href="https://twitter.com/mdo">@mdo</a>.</p>
-    <p>Adaptado para o Hexo por <a target="_blank" rel="noopener" href="http://www.codeblocq.com/">klugjo</a>.</p>
-    <p><a href="#">Voltar ao topo</a></p>
-</footer>
         
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/prism/prism.js"></script>
 
-
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-
-
-        <!-- Icons from Feather -->
-        <script>
-            feather.replace();
-        </script>
     </body>
 </html>
