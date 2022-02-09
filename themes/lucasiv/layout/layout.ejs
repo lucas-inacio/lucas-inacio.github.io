@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html class="background">
+<!-- <html style="background-color: #222;"> -->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,19 +8,37 @@
         <%- css('bootstrap/css/bootstrap.min.css') %>
         <%- css('prism/prism.css') %>
         <%- js('bootstrap/js/bootstrap.bundle.min.js') %>
+        <style>
+            .backgroundC {
+                background-color: #0A0A0A;
+            }
+
+            .mainC {
+                background-color: #222;
+            }
+
+            .headC {
+                background-color: #333;
+            }
+
+            .titleC {
+                background-color: seagreen;
+            }
+        </style>
     </head>
-    <body>
+    <body class="backgroundC">
+    <!-- <body style="background-color: #222;"> -->
         <div class="main">
-            <div class="container-fluid sticky-top bg-light shadow">
-                <h1 class="container title">
+            <div class="container-fluid sticky-top titleC">
+                <h1 class="container title titleC">
                     <%= config.title %>
                 </h1>
-                <p class="container text-secondary"><%= config.subtitle %></p>
+                <p class="container text-dark"><%= config.subtitle %></p>
                 <%- partial('_partial/menu') %>
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 text-secondary">
                         <%- body %>
                     </div>
                     <%- partial('_partial/sidebar') %>

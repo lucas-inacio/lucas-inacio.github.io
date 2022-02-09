@@ -1,8 +1,9 @@
 <!-- Ativo apenas em telas md e acima. -->
 <div class="text-center list-group col-lg-4 d-none d-lg-block">
-    <div class="sticky-top" style="top: 200px;">    
+    <div class="sticky-top" style="top: 200px;">
+        <h5 class="text-white">Categorias</h5> 
         <% for (let i in theme.tags) { %>
-            <a class="list-group-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+            <a class="list-group-item bg-transparent text-white border-bottom border-0 border-success" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
         <% } %>
     </div>
 </div>
