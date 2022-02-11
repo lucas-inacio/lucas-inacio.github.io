@@ -1,6 +1,8 @@
 ---
 title: Dicas para usar libserialport
 date: 2022-02-05 19:45:40
+categories: 
+- C++
 ---
 Dicas valiosas para quem quer utilizar essa biblioteca para comunicação serial.
 <!-- more -->

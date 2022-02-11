@@ -1,6 +1,8 @@
 ---
 title: Hello World
 date: 2021/05/01
+categories:
+- Geral
 ---
 Olá, todo mundo! Este é meu primeiro post!
 <!-- more -->

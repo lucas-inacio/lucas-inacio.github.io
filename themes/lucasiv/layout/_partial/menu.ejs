@@ -25,8 +25,8 @@
                             <a class="list-group-item titleC text-dark" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
                         <% } %>
                         <hr />
-                        <% for (let i in theme.tags) { %>
-                            <a class="list-group-item titleC text-dark" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+                        <% for (let i of site.categories.data) { %>
+                            <a class="list-group-item titleC text-dark" href="<%- url_for(i.path) %>"><%= i.name %></a>
                         <% } %>
                     </ul>
                 </div>

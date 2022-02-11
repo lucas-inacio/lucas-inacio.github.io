@@ -25,7 +25,7 @@
         <!-- Only display the Read More link if we are displaying an excerpt -->
         <% if(item.excerpt) { %>
             <p>
-                <a class="btn btn-success" href="<%- config.root %><%- item.path %>">
+                <a class="btn btn-success" href="<%- url_for(item.path) %>">
                     <%= theme.excerpt_link %>
                 </a>
             </p>
