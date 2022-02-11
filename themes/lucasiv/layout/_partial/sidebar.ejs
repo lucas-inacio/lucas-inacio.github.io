@@ -2,16 +2,6 @@
 <div class="text-center list-group col-lg-4 d-none d-lg-block px-3">
     <div class="sticky-top rounded-bottom" style="top: 152px;">
         <h5 class="text-white headC p-1 m-0 b-0 rounded-top">Categorias</h5> 
-        <!-- <% for (let i in theme.tags) { %>
-            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-        <% } %> -->
-        <!-- <%- list_categories(site.categories, {
-            class: 'list-group-item mainC text-white border-0 px-3 ',
-            show_count: false,
-            transform: (str) => {
-              return titlecase(str);
-            }
-          }) %> -->
         <% for (let i of site.categories.data) { %>
             <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="<%- url_for(i.path) %>"><%= i.name %></a>
         <%}%>
