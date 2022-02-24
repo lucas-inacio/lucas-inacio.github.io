@@ -36,10 +36,10 @@
     <!-- <body style="background-color: #222;"> -->
         <div class="main">
             <div class="container-fluid sticky-top bg-dark">
-                <h1 class="container title bg-dark text-white">
+                <h1 class="container title bg-dark text-white hideOnScroll">
                     Blog do Lucas
                 </h1>
-                <p class="container text-white">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
+                <p class="container text-white hideOnScroll">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
                 <div class="container">
     <!-- Somente em telas md e acima -->
     <ul class="nav d-none d-lg-flex justify-content-center">
@@ -184,5 +184,23 @@
         
 <script src="/prism/prism.js"></script>
 
+        <script>
+            function checkScroll(event) {
+                let elements = document.getElementsByClassName('hideOnScroll');
+                let offset = window.scrollY;
+
+                if (offset > 130) {
+                    for (let e of elements) {
+                        e.classList.add('d-none');
+                    }
+                } else if (offset == 0) {
+                    for (let e of elements) {
+                        e.classList.remove('d-none');
+                    }
+                }
+            }
+
+            document.addEventListener('scroll', checkScroll);
+        </script>
     </body>
 </html>
