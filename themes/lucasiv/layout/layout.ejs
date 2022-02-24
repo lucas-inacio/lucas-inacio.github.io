@@ -30,13 +30,13 @@
     <!-- <body style="background-color: #222;"> -->
         <div class="main">
             <div class="container-fluid sticky-top bg-dark">
-                <h1 class="container title bg-dark text-white">
+                <h1 class="container title bg-dark text-white hideOnScroll">
                     <%= config.title %>
                 </h1>
-                <p class="container text-white"><%= config.subtitle %></p>
+                <p class="container text-white hideOnScroll"><%= config.subtitle %></p>
                 <%- partial('_partial/menu') %>
             </div>
-            <div class="container">
+            <div class="container" id="contentMain">
                 <div class="row">
                     <div class="col-lg-8 text-secondary">
                         <%- body %>
@@ -46,5 +46,23 @@
             </div>
         </div>
         <%- js('prism/prism.js') %>
+        <script>
+            function checkScroll(event) {
+                let elements = document.getElementsByClassName('hideOnScroll');
+                let offset = window.scrollY;
+
+                if (offset > 130) {
+                    for (let e of elements) {
+                        e.classList.add('d-none');
+                    }
+                } else if (offset == 0) {
+                    for (let e of elements) {
+                        e.classList.remove('d-none');
+                    }
+                }
+            }
+
+            document.addEventListener('scroll', checkScroll);
+        </script>
     </body>
 </html>
