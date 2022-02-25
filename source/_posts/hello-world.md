@@ -11,5 +11,7 @@ Compartilhando aqui meus projetos eu espero contribuir de alguma forma com outra
 O conteúdo publicado aqui também servirá como documentação para que eu possa consultar mais tarde :D
 
 ## Agradecimentos
-O visual deste blog foi baseado (e modificado) [nesta](https://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/) série de tutoriais.
+~~O visual deste blog foi baseado (e modificado) [nesta](https://www.codeblocq.com/2016/03/Create-an-Hexo-Theme-Part-1-Index/) série de tutoriais.~~
+
+Atualmente estou utilizando o meu próprio tema.
 
