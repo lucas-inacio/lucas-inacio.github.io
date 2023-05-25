@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="background">
+<!-- <html style="background-color: #222;"> -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blog do Lucas</title>
+        
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+        
+<link rel="stylesheet" href="/prism/prism.css">
+
+        
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            .backgroundC {
+                background-color: #0A0A0A;
+            }
+
+            .mainC {
+                background-color: #222;
+            }
+
+            .headC {
+                background-color: #333;
+            }
+
+            .titleC {
+                background-color: seagreen;
+            }
+        </style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body class="backgroundC">
+    <!-- <body style="background-color: #222;"> -->
+        <div class="main">
+            <div class="container-fluid sticky-top bg-dark">
+                <h1 class="container title bg-dark text-white hideOnScroll">
+                    Blog do Lucas
+                </h1>
+                <p class="container text-white hideOnScroll">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
+                <div class="container">
+    <!-- Somente em telas md e acima -->
+    <ul class="nav d-none d-lg-flex justify-content-center">
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/">Início</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/archives">Arquivo</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+            </li>
+        
+    </ul>
+
+    <!-- Somente em telas pequenas -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-block d-lg-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navBarContent" arai-controls="navBarContent" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end bg-dark" id="navBarContent">
+                <div class="offcanvas-header text-white">
+                    <h3>Menu</h3>
+                    <button type="button" class="btn-close bg-white text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="list-group">
+                        
+                            <a class="list-group-item titleC text-dark" href="/">Início</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/archives">Arquivo</a>
+                        
+                            <a class="list-group-item titleC text-dark" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+                        
+                        <hr />
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/C/">C++</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/Microcontroladores/">Microcontroladores</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/Geral/">Geral</a>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-secondary">
+                        <div class="row text-white pt-3" style="color: white;">
+    <h1>Usando o ADC do ESP32 para gravar áudio</h1>
+    <div class="text-white">
+        24/05/2023 
+    </div>
+    <p>Como utilizar o ADC do ESP32 com alta taxa de captura</p>
+<span id="more"></span>
+<h2 id="Motivacao"><a href="#Motivacao" class="headerlink" title="Motivação"></a>Motivação</h2><p>O núcleo do Arduino para o ESP32 facilita muito a criação de pequenos projetos. Porém as abstrações criadas pela API do<br>Arduino acabam sacrificando o desempenho pela acessibilidade. Aplicações onde o velocidade é um fator importante exigem que nos aprofundemos sobre o funcionamento do hardware e em como utilizar suas ferramentas oficiais. É o caso da captura de áudio onde altas taxas de amostragem se fazem necessárias para atingir um grau de fidelidade. O ESP32 possui um SDK oficial chamado ESP-IDF. Ele permite explorar toda a capacidade do SoC. A solução apresentada configura o ADC para operar no modo de aquisição contínua utilizando os recursos de acesso direto à memória (DMA).</p>
+<h2 id="Conversor-Analogico-x2F-Digital-ADC"><a href="#Conversor-Analogico-x2F-Digital-ADC" class="headerlink" title="Conversor Analógico&#x2F;Digital (ADC)"></a>Conversor Analógico&#x2F;Digital (ADC)</h2><p>O ESP32 possui dois módulos ADC que podem ser utilizados por cinco controladores diferentes. No entando somente o ADC1 pode ser usado em DMA. A resolução máxima é de 12 bits.</p>
+<p><img src="/2023/05/24/Usando-o-ADC-do-ESP32-para-gravar-audio/sar-adc-depiction.jpg"></p>
+<p>Configurar o ADC para operar no modo DMA significa que ele realizará capturas em intervalos fixos e os escreverá diretamente na memória, sem intervenção da CPU.</p>
+<h3 id="Configuracao"><a href="#Configuracao" class="headerlink" title="Configuração"></a>Configuração</h3><p>O código abaixo foi adaptado do <a target="_blank" rel="noopener" href="https://github.com/espressif/esp-idf/tree/release/v4.4/examples/peripherals/adc/dma_read">exemplo</a> disponibilizado pelo repositório oficial do ESP-IDF no GitHub.</p>
+<p>Primeiramente o driver do ADC é inicializado utilizando o controlador digital. Nesse momento são especificados os tamanhos dos buffers, o ADC utilizado e os canais.</p>
+<p>Depois uma estrutura <code>adc_digi_pattern_config_t</code> deve ser criada para configurar cada canal indepentendemente. Nesse caso somente o canal 7 (GPIO35) é configurado.</p>
+<p>Finalmente a taxa de amostragem desejada é indicada com o uso da estrutura <code>adc_digi_configuration_t</code>. 44,1kHz é um valor comum para áudio.</p>
+<p>A função <code>continuous_adc_init</code> é chamada na função <code>setup</code> em seguida.</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Referente a configurações do ADC
+#define ADC_BUFFER       1024
+#define ADC_NUM_BYTES    512 &#x2F;&#x2F; 256 amostras de 16 bits
+
+static void continuous_adc_init(void)
+&#123;
+    &#x2F;&#x2F; Inicializa o driver ADC
+    adc_digi_init_config_t adc_dma_config &#x3D; &#123;
+        .max_store_buf_size &#x3D; 1024,
+        .conv_num_each_intr &#x3D; ADC_NUM_BYTES,
+        .adc1_chan_mask &#x3D; BIT(7), &#x2F;&#x2F; Canal 7 (pino 35 do ESP32)
+        .adc2_chan_mask &#x3D; ADC_UNIT_1,
+    &#125;;
+    ESP_ERROR_CHECK(adc_digi_initialize(&amp;adc_dma_config));
+
+    &#x2F;&#x2F; Configura o canal 7 do ADC1 (GPIO35)
+    adc_digi_pattern_config_t adc_pattern &#x3D; &#123;
+        .atten &#x3D; ADC_ATTEN_DB_11,
+        .channel &#x3D; ADC1_CHANNEL_7,
+        .unit &#x3D; 0,
+        .bit_width &#x3D; SOC_ADC_DIGI_MAX_BITWIDTH, &#x2F;&#x2F; 12 bits
+    &#125;;
+
+    &#x2F;&#x2F; Configura o ADC para operar no modo DMA
+    adc_digi_configuration_t dig_cfg &#x3D; &#123;
+        .conv_limit_en &#x3D; 1, &#x2F;&#x2F; Esse valor deve ser 1 para ESP32
+        .conv_limit_num &#x3D; 250,
+        .pattern_num &#x3D; 1, &#x2F;&#x2F; Apenas um canal é utilizado
+        .adc_pattern &#x3D; &amp;adc_pattern,
+        .sample_freq_hz &#x3D; 44100, &#x2F;&#x2F; Amostragem a 44,1kS&#x2F;s (áudio a 44,1kHz)
+        .conv_mode &#x3D; ADC_CONV_SINGLE_UNIT_1,
+        .format &#x3D; ADC_DIGI_OUTPUT_FORMAT_TYPE1,
+    &#125;;
+    ESP_ERROR_CHECK(adc_digi_controller_configure(&amp;dig_cfg));
+&#125;
+
+void setup() &#123;
+    continuous_adc_init();
+    adc_digi_start(); &#x2F;&#x2F; Inicia a captura
+&#125;
+
+void loop() &#123;
+
+&#125;</code></pre>
+<h2 id="Capturando-os-dados"><a href="#Capturando-os-dados" class="headerlink" title="Capturando os dados"></a>Capturando os dados</h2><p>Agora o ESP32 está capturando as amostras do ADC a uma taxa de aproximadamente 44,1kHz. Porém o buffer de 1024 bytes configurado anteriormente logo será preenchido. Caso as amostras não sejam lidas a tempo o buffer será sobrescrito. Como, então, deve-se ler esses dados?</p>
+<h3 id="Leitura-das-amostras"><a href="#Leitura-das-amostras" class="headerlink" title="Leitura das amostras"></a>Leitura das amostras</h3><p>No <code>loop</code> pode-se utilizar a função <code>adc_digi_read_bytes</code> para obter acesso às amostras lidas pelo ADC. Ela espera pelo tempo especificado ou até que as amostras estejam prontas.</p>
+<p>Contanto que os dados sejam lidos suficientemente rápido todas as amostras serão obtidas.</p>
+<p>É responsabilidade do <code>loop</code> ler os dados rapidamente. Isso significa que não é possível realizar operações lentas nessa função. Se o objetivo for, por exemplo, gravar os dados em um cartão SD, será necessário delegar este trabalho a outra tarefa.</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void loop() &#123;
+    esp_err_t ret;
+    uint32_t ret_num &#x3D; 0;
+    uint8_t result[ADC_NUM_BYTES];
+
+    &#x2F;&#x2F; Espera pelos resultados do ADC por até 1 segundo
+    ret &#x3D; adc_digi_read_bytes(result, ADC_NUM_BYTES, &amp;ret_num, 1000);
+    if(ret &#x3D;&#x3D; ESP_OK) &#123;
+        &#x2F;&#x2F; Faça alguma coisa com as amostras
+
+    &#125; else if (ret !&#x3D; ESP_ERR_TIMEOUT) &#123;
+        Serial.println(&quot;Erro inesperado!&quot;);
+        ESP.restart();
+    &#125;
+&#125;</code></pre>
+<h2 id="Processando-os-dados"><a href="#Processando-os-dados" class="headerlink" title="Processando os dados"></a>Processando os dados</h2><p>Para este exemplo as amostras serão gravadas em um cartão SD. As amostras serão convertidas para oito bits e escritas em um arquivo .wav. O uso da classe <code>Wav8BitLoader</code> é empregado para facilitar o processo.</p>
+<h3 id="Funcionamento"><a href="#Funcionamento" class="headerlink" title="Funcionamento"></a>Funcionamento</h3><p>A função <code>setup</code> deve ser modificada para criar uma tarefa (task) que será responsável por gravar os dados no cartão SD. Essa tarefa terá um pilha de <code>EXCHANGE_BUFFER_SIZE</code> bytes.</p>
+<p>A cada aquisição o <code>loop</code> preenche um dos buffers. Quando houver dados o suficiente (4096 bytes nesse caso) o buffer é trocado, permitindo que <code>storeTask</code> manipule os dados novos sem interrupção.</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Dupla de buffers. Eles são trocados sempre que há dados suficientes para escrita.
+&#x2F;&#x2F; O tamanho deve ser um múltiplo de ADC_NUM_BYTES &#x2F; 2
+#define EXCHANGE_BUFFER_SIZE 4096
+uint8_t buffer1[EXCHANGE_BUFFER_SIZE];
+uint8_t buffer2[EXCHANGE_BUFFER_SIZE];
+size_t loopCounter &#x3D; 0;
+volatile uint8_t *loopPointer &#x3D; buffer1;  &#x2F;&#x2F; usado no loop
+volatile uint8_t *storePointer &#x3D; buffer2; &#x2F;&#x2F; usado na tarefa de gravação
+
+TaskHandle_t storeTaskHandle;
+
+void swap_buffers() &#123;
+    volatile uint8_t *tmp &#x3D; loopPointer;
+    loopPointer &#x3D; storePointer;
+    storePointer &#x3D; tmp;
+&#125;
+
+Wav8BitLoader *wav &#x3D; nullptr;
+void storeTask(void *param) &#123;
+    while(true) &#123;
+        &#x2F;&#x2F; Espera indefinidamente pelos dados
+        uint32_t taskCount &#x3D; ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+        wav-&gt;writeData((uint8_t *)storePointer, EXCHANGE_BUFFER_SIZE);
+    &#125;
+&#125;
+
+void setup() &#123;
+    Serial.begin(115200);
+    if(!SD.begin(SS, SPI, 10000000)) &#123;
+        Serial.println(&quot;Erro ao inicializar SD!&quot;);
+        ESP.restart();
+    &#125;
+
+    wav &#x3D; new Wav8BitLoader(SD, &quot;&#x2F;novo.wav&quot;);
+    if(wav-&gt;header.chunkSize &#x3D;&#x3D; 0) &#123;
+        Serial.println(&quot;Erro ao ler arquivo!&quot;);
+        ESP.restart();
+    &#125;
+
+    &#x2F;&#x2F; Cria tarefa de gravação
+    xTaskCreate(
+        storeTask, &quot;SD task&quot;, EXCHANGE_BUFFER_SIZE, nullptr, 1, &amp;storeTaskHandle);
+    if(storeTaskHandle &#x3D;&#x3D; nullptr) &#123;
+        Serial.println(&quot;Falha ao criar tarefa&quot;);
+        ESP.restart();
+    &#125;
+
+    continuous_adc_init();
+
+    Serial.println(&quot;Iniciando captura de som&quot;);
+    adc_digi_start();
+&#125;
+
+void loop() &#123;
+    esp_err_t ret;
+    uint32_t ret_num &#x3D; 0;
+    uint8_t result[ADC_NUM_BYTES];
+
+    &#x2F;&#x2F; Espera pelos resultados do ADC por até 1 segundo
+    ret &#x3D; adc_digi_read_bytes(result, ADC_NUM_BYTES, &amp;ret_num, 1000);
+    if(ret &#x3D;&#x3D; ESP_OK) &#123;
+        for(size_t i &#x3D; 0; i &lt; ret_num; i +&#x3D; 2) &#123;
+            adc_digi_output_data_t *data &#x3D;
+                reinterpret_cast&lt;adc_digi_output_data_t*&gt;(&amp;result[i]);
+            uint8_t value &#x3D; (data-&gt;type1.data &gt;&gt; 4) | ((data-&gt;type1.data &gt;&gt; 4) &amp; 0x07);
+            loopPointer[loopCounter++] &#x3D; value;
+        &#125;
+
+        &#x2F;&#x2F; Observe que ADC_NUM_BYTES devem ser lidos por vez de forma que o
+        &#x2F;&#x2F; teste abaixo funcione.
+        &#x2F;&#x2F; Como cada amostra tem 2 bytes temos ADC_NUM_BYTES &#x2F; 2 (256) amostras por vez.
+        &#x2F;&#x2F; Quando houver 2048 amostras notifica storeTask para gravar os dados.
+        if(loopCounter &#x3D;&#x3D; EXCHANGE_BUFFER_SIZE) &#123;
+            loopCounter &#x3D; 0;
+            &#x2F;&#x2F; Troca os buffers para poder continuar capturando os dados do ADC
+            &#x2F;&#x2F; enquanto a tarefa storeTask grava os bytes no cartão SD
+            swap_buffers();
+            &#x2F;&#x2F; Notifica storeTask que há dados a serem gravados
+            xTaskNotifyGive(storeTaskHandle);
+        &#125;
+
+    &#125; else if (ret !&#x3D; ESP_ERR_TIMEOUT) &#123;
+        Serial.println(&quot;Erro inesperado!&quot;);
+        ESP.restart();
+    &#125;
+&#125;</code></pre>
+<p>O <a target="_blank" rel="noopener" href="https://github.com/lucas-inacio/esp32_wav_recorder">código completo</a> está disponível no Gitub. Incluindo a implementação da classe <code>Wav8BitLoader</code>.</p>
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>É comum utilizaram o periférico I2S do ESP32 para ler&#x2F;escrever áudio no formato digital. Ou ainda utilizá-lo para ler do ADC. A abordagem apresentada utiliza somente o ADC e suas APIs. O código é mais simples e pode servir para diversas aplicações além de áudio.</p>
+<h2 id="Referencias"><a href="#Referencias" class="headerlink" title="Referências"></a>Referências</h2><p><a target="_blank" rel="noopener" href="https://docs.espressif.com/projects/esp-idf/en/v4.4.4/esp32/api-reference/peripherals/adc.html">Guia da API do ESP32 v4.4.4</a><br><a target="_blank" rel="noopener" href="https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf">Manual de Referência do ESP32</a><br><a target="_blank" rel="noopener" href="https://github.com/espressif/esp-idf/tree/release/v4.4/examples/peripherals/adc/dma_read">Exemplo oficial da Espressif utilizando o ADC no modo DMA</a></p>
+
+</div>
+                    </div>
+                    <!-- Ativo apenas em telas md e acima. -->
+<div class="text-center list-group col-lg-4 d-none d-lg-block px-3">
+    <div class="sticky-top rounded-bottom" style="top: 152px;">
+        <h5 class="text-white headC p-1 m-0 b-0 rounded-top">Categorias</h5> 
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/C/">C++</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/Microcontroladores/">Microcontroladores</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/Geral/">Geral</a>
+        
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+        
+<script src="/prism/prism.js"></script>
+
+        <script>
+            function checkScroll(event) {
+                let elements = document.getElementsByClassName('hideOnScroll');
+                let offset = window.scrollY;
+
+                if (offset > 130) {
+                    for (let e of elements) {
+                        e.classList.add('d-none');
+                    }
+                } else if (offset == 0) {
+                    for (let e of elements) {
+                        e.classList.remove('d-none');
+                    }
+                }
+            }
+
+            document.addEventListener('scroll', checkScroll);
+        </script>
+    </body>
+</html>
