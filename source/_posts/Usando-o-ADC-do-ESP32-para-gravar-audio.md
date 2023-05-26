@@ -199,7 +199,7 @@ void loop() {
 ```
 O [código completo](https://github.com/lucas-inacio/esp32_wav_recorder) está disponível no Gitub. Incluindo a implementação da classe ```Wav8BitLoader```.
 ## Conclusão
-É comum utilizaram o periférico I2S do ESP32 para ler/escrever áudio no formato digital. Ou ainda utilizá-lo para ler do ADC. A abordagem apresentada utiliza somente o ADC e suas APIs. O código é mais simples e pode servir para diversas aplicações além de áudio.
+É comum utilizar o periférico I2S do ESP32 para ler/escrever áudio no formato digital. Ou ainda utilizá-lo para ler do ADC. A abordagem apresentada utiliza somente o ADC e suas APIs. O código é mais simples e pode servir para diversas aplicações além de áudio.
 
 ## Referências
 [Guia da API do ESP32 v4.4.4](https://docs.espressif.com/projects/esp-idf/en/v4.4.4/esp32/api-reference/peripherals/adc.html)
