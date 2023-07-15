@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="background">
+<!-- <html style="background-color: #222;"> -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Blog do Lucas</title>
+        
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+        
+<link rel="stylesheet" href="/prism/prism.css">
+
+        
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            .backgroundC {
+                background-color: #0A0A0A;
+            }
+
+            .mainC {
+                background-color: #222;
+            }
+
+            .headC {
+                background-color: #333;
+            }
+
+            .titleC {
+                background-color: seagreen;
+            }
+        </style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body class="backgroundC">
+    <!-- <body style="background-color: #222;"> -->
+        <div class="main">
+            <div class="container-fluid sticky-top bg-dark">
+                <h1 class="container title bg-dark text-white hideOnScroll">
+                    Blog do Lucas
+                </h1>
+                <p class="container text-white hideOnScroll">Salvando aqui minhas ideias para não inventar tudo de novo.</p>
+                <div class="container">
+    <!-- Somente em telas md e acima -->
+    <ul class="nav d-none d-lg-flex justify-content-center">
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/">Início</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/archives">Arquivo</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link text-white" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+            </li>
+        
+    </ul>
+
+    <!-- Somente em telas pequenas -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-block d-lg-none">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navBarContent" arai-controls="navBarContent" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end bg-dark" id="navBarContent">
+                <div class="offcanvas-header text-white">
+                    <h3>Menu</h3>
+                    <button type="button" class="btn-close bg-white text-reset float-start" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="list-group">
+                        
+                            <a class="list-group-item titleC text-dark" href="/">Início</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/archives">Arquivo</a>
+                        
+                            <a class="list-group-item titleC text-dark" target="_blank" rel="noopener" href="https://github.com/lucas-inacio">GitHub</a>
+                        
+                        <hr />
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/C/">C++</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/Microcontroladores/">Microcontroladores</a>
+                        
+                            <a class="list-group-item titleC text-dark" href="/categories/Geral/">Geral</a>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 text-secondary">
+                        <div class="row text-white pt-3" style="color: white;">
+    <h1>Usando FLTK com as ferramentas de build do Visual Studio e CMake</h1>
+    <div class="text-white">
+        15/07/2023 
+    </div>
+    <p>Como compilar e utilizar a biblioteca FLTK (e a ferramenta Fluid) com CMake</p>
+<span id="more"></span>
+<h2 id="FLTK-e-seu-processo-de-compilacao"><a href="#FLTK-e-seu-processo-de-compilacao" class="headerlink" title="FLTK e seu processo de compilação"></a>FLTK e seu processo de compilação</h2><p>A FLTK é uma biblioteca para criação de interfaces gráficas com C++. Ela vem acompanhada de uma ferramenta chamada Fluid que permite o desenvolvimento da interface de forma visual. As instruções presentes no repositório oficial da FLTK recomendam abrir a solução .sln do Visual Studio para concluir a construção da biblioteca. Mas se você tiver apenas as ferramentas de build (não a IDE) do Visual Studio? Aqui seguem as instruções detalhadas.</p>
+<h3 id="Ferramentas-necessarias"><a href="#Ferramentas-necessarias" class="headerlink" title="Ferramentas necessárias"></a>Ferramentas necessárias</h3><ul>
+<li>Git</li>
+<li>CMake</li>
+<li>Ferramentas de build do Visual Studio</li>
+</ul>
+<h3 id="Antes-de-comecar"><a href="#Antes-de-comecar" class="headerlink" title="Antes de começar"></a>Antes de começar</h3><p>Todos os comandos que seguem devem ser executados em um terminal de comandos de desenvolvedor do Visual Studio. </p>
+<h3 id="Obtendo-a-versao-de-release"><a href="#Obtendo-a-versao-de-release" class="headerlink" title="Obtendo a versão de release"></a>Obtendo a versão de release</h3><p>A atual versão em desenvolvimento da FLTK é a 1.4. Porém esta versão ainda não está estável e não há lançamentos oficiais. Para produção deve-se utilizar a versão 1.3. Clone o repositório da seguinte forma:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">git clone --branch 1.3.8 https:&#x2F;&#x2F;github.com&#x2F;fltk&#x2F;fltk.git</code></pre>
+
+<h3 id="Configurando-o-projeto"><a href="#Configurando-o-projeto" class="headerlink" title="Configurando o projeto"></a>Configurando o projeto</h3><p>Dentro do diretório baixado crie um novo diretório chamado build:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir build
+cd build</code></pre>
+<p>Configure o projeto da seguinte forma:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cmake .. -G &quot;Visual Studio 17 2022&quot; --install-prefix&#x3D;&lt;diretório da sua escolha&gt;</code></pre>
+
+<h3 id="Compilando-o-projeto"><a href="#Compilando-o-projeto" class="headerlink" title="Compilando o projeto:"></a>Compilando o projeto:</h3><p>A escolha do argumento <code>--target</code> é importante. Para compilar o projeto e instalá-lo no diretório indicado em <code>--install-prefix</code> escolha INSTALL. Para somente compilar escolha ALL_BUILD. Também é possível mudar a configuração de Release para Debug.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cmake --build . --target&#x3D;INSTALL --config&#x3D;Release</code></pre>
+<p>Os passos abordados serão suficientes para compilar a biblioteca FLTK e instalá-la no diretório escolhido. Após isso é possível utilizá-la em seus projetos.</p>
+<h3 id="Utilizando-a-biblioteca-FLTK-com-CMake"><a href="#Utilizando-a-biblioteca-FLTK-com-CMake" class="headerlink" title="Utilizando a biblioteca FLTK com CMake"></a>Utilizando a biblioteca FLTK com CMake</h3><p>Vamos criar um projeto hipotético para utilizar a biblioteca FLTK. Ele será configurado de forma a utilizar os arquivos .fl gerados pela Fluid e incluir no nosso programa. Crie uma pasta para o projeto com a seguinte estrutura:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">E:\TESTE
+|   CMakeLists.txt
+|
+\---app
+    |   CMakeLists.txt
+    |
+    \---src
+            app.cpp
+            ui.fl</code></pre>
+<p>Em Teste&#x2F;CMakeLists.txt digite o seguinte:</p>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">cmake_minimum_required(VERSION 3.11)
+
+project(teste)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
+
+# Aqui indicamos onde está nossa biblioteca previamente compilada
+set(FLTK_DIR E:&#x2F;Caminho&#x2F;Exemplo&#x2F;fltk&#x2F;CMake)
+find_package(FLTK REQUIRED NO_MODULE)
+
+add_subdirectory(app)</code></pre>
+<p>Crie Teste&#x2F;app&#x2F;CMakeLists.txt como segue:</p>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"># O arquivo Teste&#x2F;app&#x2F;src&#x2F;ui.fl será criado com o programa Fluid para especificar nossa interface
+fltk_wrap_ui(app src&#x2F;ui.fl)
+add_executable(app WIN32 MACOSX_BUNDLE src&#x2F;app.cpp $&#123;app_FLTK_UI_SRCS&#125;)
+target_include_directories(app PUBLIC $&#123;FLTK_INCLUDE_DIRS&#125;)
+target_link_libraries(app fltk)</code></pre>
+<p>Teste&#x2F;app&#x2F;src&#x2F;app.cpp deve conter o seguinte:</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;ui.h&quot;
+
+int main(int argc, char **argv)
+&#123;
+    Fl_Window *window &#x3D; make_window();
+    window-&gt;show();
+    return Fl::run();
+&#125;</code></pre>
+<p>Agora para criar ul.fl é preciso utilizar o programa fluid.exe que deve estar localizado no diretório bin de instalação da biblioteca FLTK. Crie uma nova função com o nome <code>make_window</code> e na sequência crie uma janela e configure o rótulo para Teste. Salve o arquivo como Teste&#x2F;app&#x2F;src&#x2F;ui.fl.<br><img src="/2023/07/15/Usando-FLTK-com-as-ferramentas-de-build-do-Visual-Studio-e-CMake/make_window.png"><br><img src="/2023/07/15/Usando-FLTK-com-as-ferramentas-de-build-do-Visual-Studio-e-CMake/criando_janela.png"><br>Finalmente crie um diretório build na raíz do projeto e entre nele pelo terminal do Visual Studio:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir build
+cd build
+cmake .. -G &quot;Visual Studio 17 2022&quot;
+cmake --build . -- config&#x3D;Release</code></pre>
+<p>Pronto. Um executável será gerado no diretório Teste&#x2F;build&#x2F;app&#x2F;Release&#x2F;app.exe.</p>
+
+</div>
+                    </div>
+                    <!-- Ativo apenas em telas md e acima. -->
+<div class="text-center list-group col-lg-4 d-none d-lg-block px-3">
+    <div class="sticky-top rounded-bottom" style="top: 152px;">
+        <h5 class="text-white headC p-1 m-0 b-0 rounded-top">Categorias</h5> 
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/C/">C++</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/Microcontroladores/">Microcontroladores</a>
+        
+            <a class="list-group-item mainC text-white border-bottom border-0 border-success px-3" href="/categories/Geral/">Geral</a>
+        
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+        
+<script src="/prism/prism.js"></script>
+
+        <script>
+            function checkScroll(event) {
+                let elements = document.getElementsByClassName('hideOnScroll');
+                let offset = window.scrollY;
+
+                if (offset > 130) {
+                    for (let e of elements) {
+                        e.classList.add('d-none');
+                    }
+                } else if (offset == 0) {
+                    for (let e of elements) {
+                        e.classList.remove('d-none');
+                    }
+                }
+            }
+
+            document.addEventListener('scroll', checkScroll);
+        </script>
+    </body>
+</html>
