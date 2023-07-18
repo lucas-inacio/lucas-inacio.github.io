@@ -96,6 +96,6 @@ Finalmente crie um diretório build na raíz do projeto e entre nele pelo termin
 mkdir build
 cd build
 cmake .. -G "Visual Studio 17 2022"
-cmake --build . -- config=Release
+cmake --build . --config=Release
 ```
 Pronto. Um executável será gerado no diretório Teste/build/app/Release/app.exe.
