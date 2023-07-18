@@ -30,6 +30,18 @@
             .titleC {
                 background-color: seagreen;
             }
+
+            img {
+                max-width: 43vw;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+
+            @media(max-width: 800px) {
+                img {
+                    max-width: 90%;
+                }
+            }
         </style>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body class="backgroundC">
@@ -152,7 +164,7 @@ add_executable(app WIN32 MACOSX_BUNDLE src&#x2F;app.cpp $&#123;app_FLTK_UI_SRCS&
 target_include_directories(app PUBLIC $&#123;FLTK_INCLUDE_DIRS&#125;)
 target_link_libraries(app fltk)</code></pre>
 <p>Teste&#x2F;app&#x2F;src&#x2F;app.cpp deve conter o seguinte:</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;ui.h&quot;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &quot;ui.h&quot;
 
 int main(int argc, char **argv)
 &#123;
@@ -164,7 +176,7 @@ int main(int argc, char **argv)
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir build
 cd build
 cmake .. -G &quot;Visual Studio 17 2022&quot;
-cmake --build . -- config&#x3D;Release</code></pre>
+cmake --build . --config&#x3D;Release</code></pre>
 <p>Pronto. Um executável será gerado no diretório Teste&#x2F;build&#x2F;app&#x2F;Release&#x2F;app.exe.</p>
 
 </div>
