@@ -78,7 +78,7 @@ target_include_directories(app PUBLIC ${FLTK_INCLUDE_DIRS})
 target_link_libraries(app fltk)
 ```
 Teste/app/src/app.cpp deve conter o seguinte:
-```c++
+```cpp
 #include "ui.h"
 
 int main(int argc, char **argv)
