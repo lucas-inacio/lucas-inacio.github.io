@@ -24,9 +24,9 @@ O aparelho de raios-x e suas respectivas posições adotadas durante o exame rad
 #### Contextualizando
 Veremos que o caso tratado aqui é um problema bidimensional, embora o espaço seja tridimensional. Os vetores e pontos serão representados por duas coordenadas: o primeiro elemento como o eixo horizontal ({% mathjax %}x{% endmathjax %}) e o segundo elemento como o eixo vertical ({% mathjax %}z{% endmathjax %}). O eixo que vai em direção ao plano ({% mathjax %}y{% endmathjax %}) não será considerado por hora, visto que ele é o centro de rotação do aparelho de raios-x.
 
-Observando a posição de repouso do equipamento de raios-x (a posição central e vertical), percebe-se que a coordenada horizontal do ponto {% mathjax %}p{% endmathjax %} pode ser determinada com facilidade. No entanto, nada pode se dizer a respeito da posição vertical. A medida realizada pelo mamógrafo é a projeção do ponto {% mathjax %}p{% endmathjax %} na direção do eixo horizontal (a grandeza escalar {% mathjax %}K_1{% endmathjax %}). Torna-se necessária a aquisição de mais duas imagens que permitam obter novas projeções em ângulos opostos ({% mathjax %}K_2{% endmathjax %} e {% mathjax %}K_3{% endmathjax %}), tal como mostrado na imagem anterior.
+Observando a posição de repouso do equipamento de raios-x (a posição central e vertical), percebe-se que a coordenada horizontal do ponto {% mathjax %}\vec{p}{% endmathjax %} pode ser determinada com facilidade. No entanto, nada pode se dizer a respeito da posição vertical. A medida realizada pelo mamógrafo é a projeção do ponto {% mathjax %}\vec{p}{% endmathjax %} na direção do eixo horizontal (a grandeza escalar {% mathjax %}K_1{% endmathjax %}). Torna-se necessária a aquisição de mais duas imagens que permitam obter novas projeções em ângulos opostos ({% mathjax %}K_2{% endmathjax %} e {% mathjax %}K_3{% endmathjax %}), tal como mostrado na imagem anterior.
 
-Ao adquirir novas imagens nos ângulos {% mathjax %}\pm \theta{% endmathjax %} duas novas projeções são obtidas: {% mathjax %}K_1{% endmathjax %} e {% mathjax %}K_2{% endmathjax %}. A relação entre estas projeções e o ponto {% mathjax %}p{% endmathjax %} é a seguinte:
+Ao adquirir novas imagens nos ângulos {% mathjax %}\pm \theta{% endmathjax %} duas novas projeções são obtidas: {% mathjax %}K_1{% endmathjax %} e {% mathjax %}K_2{% endmathjax %}. A relação entre estas projeções e o ponto {% mathjax %}\vec{p}{% endmathjax %} é a seguinte:
 
 {% mathjax %}
 a_1 p_1 + a_2 p_2 = |\vec{a}||\vec{p}|cos(\phi)
@@ -40,7 +40,7 @@ b_1 p_1 + b_2 p_2 = |\vec{b}||\vec{p}|cos(\phi + \theta)
 c_1 p_1 + c_2 p_2 = |\vec{c}||\vec{p}|cos(\phi - \theta)
 {% endmathjax %}
 
-O ângulo {% mathjax %}\phi{% endmathjax %} é o ângulo entre o ponto {% mathjax %}p{% endmathjax %} e o eixo horizontal. Porém, o lado direito das expressões anteriores é justamente o conjunto de medidas realizadas pelo aparelho de raios-x. Pode-se simplificar as expressões para:
+O ângulo {% mathjax %}\phi{% endmathjax %} é o ângulo entre o ponto {% mathjax %}\vec{p}{% endmathjax %} e o eixo horizontal. Porém, o lado direito das expressões anteriores é justamente o conjunto de medidas realizadas pelo aparelho de raios-x. Pode-se simplificar as expressões para:
 
 {% mathjax %}
 a_1 p_1 + a_2 p_2 = K_1
@@ -55,7 +55,7 @@ c_1 p_1 + c_2 p_2 = K_3
 {% endmathjax %}
 
 #### Determinando os vetores {% mathjax %}\vec{a}{% endmathjax %}, {% mathjax %}\vec{b}{% endmathjax %} e {% mathjax %}\vec{c}{% endmathjax %}
-Note que {% mathjax %}a_n{% endmathjax %} e {% mathjax %}b_n{% endmathjax %} representam as diferentes orientações do mamógrafo durante o exame. São estas coordenadas que permitirão determinar a posição precisa de {% mathjax %}p{% endmathjax %}.
+Note que {% mathjax %}a_n{% endmathjax %} e {% mathjax %}b_n{% endmathjax %} representam as diferentes orientações do mamógrafo durante o exame. São estas coordenadas que permitirão determinar a posição precisa de {% mathjax %}\vec{p}{% endmathjax %}.
 
 Adotando {% mathjax %}\vec{a}{% endmathjax %} como o eixo de referência, obtém-se a seguinte definição:
 
@@ -96,7 +96,7 @@ cos(\theta) p_1 + sen(\theta) p_2 = K_2
 cos(\theta) p_1 - sen(\theta) p_2 = K_3
 {% endmathjax %}
 
-Chega-se às expressões finais para calcular o ponto {% mathjax %}p{% endmathjax %}:
+Chega-se às expressões finais para calcular o ponto {% mathjax %}\vec{p}{% endmathjax %}:
 
 {% mathjax %}
 p_1=\frac{K_2+K_3}{2cos(\theta)}
