@@ -33,11 +33,11 @@ a_1 p_1 + a_2 p_2 = |\vec{a}||\vec{p}|cos(\phi)
 {% endmathjax %}
 
 {% mathjax %}
-b_1 p_1 + b_2 p_2 = |\vec{b}||\vec{p}|cos(\phi + \theta)
+b_1 p_1 + b_2 p_2 = |\vec{b}||\vec{p}|cos(\phi - \theta)
 {% endmathjax %}
 
 {% mathjax %}
-c_1 p_1 + c_2 p_2 = |\vec{c}||\vec{p}|cos(\phi - \theta)
+c_1 p_1 + c_2 p_2 = |\vec{c}||\vec{p}|cos(\phi + \theta)
 {% endmathjax %}
 
 O ângulo {% mathjax %}\phi{% endmathjax %} é o ângulo entre o ponto {% mathjax %}\vec{p}{% endmathjax %} e o eixo horizontal. Porém, o lado direito das expressões anteriores é justamente o conjunto de medidas realizadas pelo aparelho de raios-x. Pode-se simplificar as expressões para:
