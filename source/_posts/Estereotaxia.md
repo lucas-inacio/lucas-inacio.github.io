@@ -5,7 +5,7 @@ categories:
 - Matemática
 - Medicina
 ---
-Um estudo sobre a matemática por trás da biópsia estereotaxica
+Um estudo sobre a matemática por trás da biópsia estereotáxica
 <!-- more -->
 ## Estereotaxia
 A estereotaxia é uma técnica radiográfica utilizada para localizar com precisão um ponto de interesse no corpo de um paciente. Exemplos comuns são a biópsia estereotáxica de mama, na qual indentifica-se a posição de uma região com microcalcificações, com o propósito de retirar uma amostra para análise. A neurocirurgia também utiliza este método para identificar estruturas profundas no cérebro.
