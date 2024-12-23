@@ -55,7 +55,7 @@ c_1 p_1 + c_2 p_2 = K_3
 {% endmathjax %}
 
 #### Determinando os vetores {% mathjax %}\vec{a}{% endmathjax %}, {% mathjax %}\vec{b}{% endmathjax %} e {% mathjax %}\vec{c}{% endmathjax %}
-Note que {% mathjax %}a_n{% endmathjax %} e {% mathjax %}b_n{% endmathjax %} representam as diferentes orientações do mamógrafo durante o exame. São estas coordenadas que permitirão determinar a posição precisa de {% mathjax %}\vec{p}{% endmathjax %}.
+Note que {% mathjax %}a_n{% endmathjax %}, {% mathjax %}b_n{% endmathjax %} e {% mathjax %}c_n{% endmathjax %} representam as diferentes orientações do mamógrafo durante o exame. São estas coordenadas que permitirão determinar a posição precisa de {% mathjax %}\vec{p}{% endmathjax %}.
 
 Adotando {% mathjax %}\vec{a}{% endmathjax %} como o eixo de referência, obtém-se a seguinte definição:
 
