@@ -60,7 +60,7 @@ Note que {% mathjax %}a_n{% endmathjax %} e {% mathjax %}b_n{% endmathjax %} rep
 Adotando {% mathjax %}\vec{a}{% endmathjax %} como o eixo de referência, obtém-se a seguinte definição:
 
 {% mathjax %}
-A=
+\vec{a}=
 \begin{bmatrix}
     1 & 0
 \end{bmatrix}
@@ -69,14 +69,14 @@ A=
 O ângulo {% mathjax %}\theta{% endmathjax %} é a chave para determinar os outros vetores:
 
 {% mathjax %}
-B=
+\vec{b}=
 \begin{bmatrix}
     cos(\theta) & sen(\theta)
 \end{bmatrix}
 {% endmathjax %}
 
 {% mathjax %}
-C=
+\vec{c}=
 \begin{bmatrix}
     cos(\theta) & -sen(\theta)
 \end{bmatrix}
