@@ -26,7 +26,7 @@ Veremos que o caso tratado aqui é um problema bidimensional, embora o espaço s
 
 Observando a posição de repouso do equipamento de raios-x (a posição central e vertical), percebe-se que a coordenada horizontal do ponto {% mathjax %}\vec{p}{% endmathjax %} pode ser determinada com facilidade. No entanto, nada pode se dizer a respeito da posição vertical. A medida realizada pelo mamógrafo é a projeção do ponto {% mathjax %}\vec{p}{% endmathjax %} na direção do eixo horizontal (a grandeza escalar {% mathjax %}K_1{% endmathjax %}). Torna-se necessária a aquisição de mais duas imagens que permitam obter novas projeções em ângulos opostos ({% mathjax %}K_2{% endmathjax %} e {% mathjax %}K_3{% endmathjax %}), tal como mostrado na imagem anterior.
 
-Ao adquirir novas imagens nos ângulos {% mathjax %}\pm \theta{% endmathjax %} duas novas projeções são obtidas: {% mathjax %}K_1{% endmathjax %} e {% mathjax %}K_2{% endmathjax %}. A relação entre estas projeções e o ponto {% mathjax %}\vec{p}{% endmathjax %} é a seguinte:
+Ao adquirir novas imagens nos ângulos {% mathjax %}\pm \theta{% endmathjax %} duas novas projeções são obtidas: {% mathjax %}K_2{% endmathjax %} e {% mathjax %}K_3{% endmathjax %}. A relação entre estas projeções e o ponto {% mathjax %}\vec{p}{% endmathjax %} é a seguinte:
 
 {% mathjax %}
 a_1 p_1 + a_2 p_2 = |\vec{a}||\vec{p}|cos(\phi)
